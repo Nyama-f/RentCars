@@ -2,50 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sign_graph"
-    app:startDestination="@id/greetFragment">
+    android:id="@+id/sign_graph">
 
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.teamforce.thanksapp.presentation.fragment.auth.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_mainFlowFragment"
-            app:destination="@id/mainFlowFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:launchSingleTop="true"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/sign_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainFlowFragment"
-        android:name="com.teamforce.thanksapp.presentation.fragment.MainFlowFragment"
-        android:label="fragment_main_flow"
-        tools:layout="@layout/fragment_main_flow" />
-    <fragment
-        android:id="@+id/greetFragment"
-        android:name="com.teamforce.thanksapp.presentation.fragment.auth.GreetFragment"
-        android:label="fragment_greet"
-        tools:layout="@layout/fragment_greet" >
-        <action
-            android:id="@+id/action_greetFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_greetFragment_to_privacyPolicyFragment2"
-            app:destination="@id/privacyPolicyFragment2" />
-    </fragment>
-    <action android:id="@+id/action_global_greetFragment" app:destination="@id/greetFragment"/>
-    <fragment
-        android:id="@+id/privacyPolicyFragment2"
-        android:name="com.teamforce.thanksapp.presentation.fragment.profileScreen.PrivacyPolicyFragment"
-        android:label="fragment_privacy_policy"
-        tools:layout="@layout/fragment_privacy_policy" />
+
 </navigation>

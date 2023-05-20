@@ -124,12 +124,12 @@ class MainFlowFragment : BaseFlowFragment(
 
     private fun hideBottomNavigation() {
         binding.bottomNavigation.visibility = View.GONE
-        binding.bottomAppBar.visibility = View.GONE
+        binding.bottomNavigation.visibility = View.GONE
     }
 
     private fun showBottomNavigation() {
         binding.bottomNavigation.visibility = View.VISIBLE
-        binding.bottomAppBar.visibility = View.VISIBLE
+        binding.bottomNavigation.visibility = View.VISIBLE
 
     }
 

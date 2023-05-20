@@ -2,7 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_graph">
+    android:id="@+id/main_graph"
+    app:startDestination="@id/carsFragment">
 
 
+    <fragment
+        android:id="@+id/carsFragment"
+        android:name="com.example.rentcars.presentation.fragment.CarsFragment"
+        android:label="fragment_cars"
+        tools:layout="@layout/fragment_cars" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.rentcars.presentation.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

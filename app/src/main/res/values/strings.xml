@@ -2,4 +2,6 @@
     <string name="app_name">RentCars</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_label">Профиль</string>
+    <string name="cars_label">Список авто</string>
 </resources>
