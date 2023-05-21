@@ -1,61 +1,97 @@
 package com.example.rentcars.presentation.fragment
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rentcars.R
+import com.example.rentcars.databinding.FragmentProfileBinding
+import com.example.rentcars.utils.invisible
+import com.example.rentcars.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
+
+    private val binding: FragmentProfileBinding by viewBinding()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var isExpanded = false
+        binding.expandBtn.setOnClickListener {
+            animExpandindCard(isExpanded)
+            isExpanded = !isExpanded
+        }
+    }
+
+    private fun animExpandindCard(isExpanded: Boolean){
+        val expandDuration = 300L // Длительность анимации в миллисекундах
+        if (isExpanded) {
+            // Если карточка уже раскрыта, скрываем ее
+            binding.contentCardLinear.animate().apply {
+                translationYBy(-binding.contentCardLinear.height.toFloat())
+                alpha(0f)
+                duration = expandDuration
+                start()
+                binding.contentCardLinear.invisible()
+            }
+            val anim = ValueAnimator.ofInt(600, 160)
+            anim.addUpdateListener { valueAnimator ->
+                val height = valueAnimator.animatedValue as Int
+                val layoutParams = binding.infoCard.layoutParams
+                layoutParams.height = height
+                binding.infoCard.layoutParams = layoutParams
+            }
+            anim.duration = expandDuration
+            anim.start()
+            binding.expandBtn.animate().apply {
+                rotation(90f)
+                duration = expandDuration
+                start()
+            }
+        } else {
+            // Если карточка скрыта, показываем ее
+            binding.contentCardLinear.animate().apply {
+                translationYBy(binding.contentCardLinear.height.toFloat())
+                alpha(1f)
+                duration = expandDuration
+                start()
+                binding.contentCardLinear.visible()
+            }
+            val anim = ValueAnimator.ofInt(160, 600)
+            anim.addUpdateListener { valueAnimator ->
+                val height = valueAnimator.animatedValue as Int
+                val layoutParams = binding.infoCard.layoutParams
+                layoutParams.height = height
+                binding.infoCard.layoutParams = layoutParams
+            }
+            anim.duration = expandDuration
+            anim.start()
+            binding.expandBtn.animate().apply {
+                rotation(-90f)
+                duration = expandDuration
+                start()
+            }
+        }
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ProfileFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
     }
