@@ -5,8 +5,9 @@ import com.example.rentcars.data.repository.ProfileRepository
 import com.example.rentcars.utils.ResultWrapper
 import com.example.rentcars.utils.safeApiCall
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class ProfileRepositoryImpl() : ProfileRepository {
+class ProfileRepositoryImpl @Inject constructor() : ProfileRepository {
 
     var profileData = ProfileEntity(
         id = 1,
