@@ -58,6 +58,7 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_btn"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:text="@string/edit"/>

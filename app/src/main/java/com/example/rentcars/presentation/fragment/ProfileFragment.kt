@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rentcars.R
 import com.example.rentcars.databinding.FragmentProfileBinding
@@ -32,6 +33,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.expandBtn.setOnClickListener {
             animExpandindCard(isExpanded)
             isExpanded = !isExpanded
+        }
+
+        binding.editBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
     }
 

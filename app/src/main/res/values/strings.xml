@@ -5,4 +5,9 @@
     <string name="profile_label">Профиль</string>
     <string name="cars_label">Список авто</string>
     <string name="edit">Редактировать</string>
+    <string name="name">Имя</string>
+    <string name="phone">Телефон</string>
+    <string name="email">Почта</string>
+    <string name="region">Регион</string>
+    <string name="save">Сохранить</string>
 </resources>

@@ -24,7 +24,9 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.saveBtn.setOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
     }
 
     companion object {
