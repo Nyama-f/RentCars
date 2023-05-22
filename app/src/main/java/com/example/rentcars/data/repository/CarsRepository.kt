@@ -23,6 +23,6 @@ interface CarsRepository {
 
     fun changeStateCar(
         id: Int,
-        state: StateOfCar
+        newState: StateOfCar
     )
 }
