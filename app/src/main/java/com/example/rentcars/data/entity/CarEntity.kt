@@ -5,11 +5,9 @@ import android.icu.text.CaseMap.Title
 data class CarEntity(
     val id: Int,
     val markAndModel: String,
-    // Сделать в виде Enum
     val typeOfCar: TypeOfCar,
     val region: String,
-    // Сделать в виде Enum
-    val state: StateOfCar
+    var state: StateOfCar
 )
 
 enum class StateOfCar(val title: String){
