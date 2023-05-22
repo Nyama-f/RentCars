@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rentcars.R
 import com.example.rentcars.databinding.FragmentCarsBinding
@@ -30,6 +31,11 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.list.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
 
     }
 
