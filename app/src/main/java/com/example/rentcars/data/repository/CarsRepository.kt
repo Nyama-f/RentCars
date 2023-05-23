@@ -10,7 +10,6 @@ interface CarsRepository {
     suspend fun getCars(): ResultWrapper<List<CarEntity>>
 
     fun addCar(
-        id: Int,
         markAndModel: String,
         typeOfCar: TypeOfCar,
         region: String,

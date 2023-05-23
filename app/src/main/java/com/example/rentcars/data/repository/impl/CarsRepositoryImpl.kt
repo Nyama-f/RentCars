@@ -63,7 +63,6 @@ class CarsRepositoryImpl @Inject constructor(
     }
 
     override fun addCar(
-        id: Int,
         markAndModel: String,
         typeOfCar: TypeOfCar,
         region: String,
@@ -72,7 +71,7 @@ class CarsRepositoryImpl @Inject constructor(
     ) {
         cars.add(
             CarEntity(
-                id, markAndModel, typeOfCar, region, state, image
+                cars.size, markAndModel, typeOfCar, region, state, image
             )
         )
     }

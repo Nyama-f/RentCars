@@ -81,6 +81,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/regionTextField"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxCornerRadiusBottomEnd="15dp"
+                    app:boxCornerRadiusBottomStart="15dp"
+                    app:boxCornerRadiusTopEnd="15dp"
+                    app:boxCornerRadiusTopStart="15dp"
+                    app:boxStrokeColor="@color/general_color_grey"
+                    app:boxStrokeWidth="0.5dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/region_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Регион"
+                        android:inputType="text|textMultiLine" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/descriptionTextField"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -135,6 +157,7 @@
 
                         <CheckBox
                             android:id="@+id/no_truck_checkbox"
+                            android:checked="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 

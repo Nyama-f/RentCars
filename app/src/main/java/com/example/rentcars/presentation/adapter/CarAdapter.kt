@@ -65,6 +65,7 @@ class CarAdapter : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback
             StateOfCar.IN_FLIGHT -> "В рейсе"
             StateOfCar.ON_REPAIR -> "На ремонте"
             StateOfCar.SOLD -> "Продано"
+            StateOfCar.REST -> "Простаивает"
         }
     }
 

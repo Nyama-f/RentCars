@@ -50,7 +50,6 @@ class CarsViewModel @Inject constructor(
     }
 
     fun addCar(
-        id: Int,
         markAndModel: String,
         typeOfCar: TypeOfCar,
         region: String,
@@ -58,7 +57,7 @@ class CarsViewModel @Inject constructor(
         image: String?
     ) {
         _isLoading.postValue(true)
-        carsRepository.addCar(id, markAndModel, typeOfCar, region, state, image)
+        carsRepository.addCar(markAndModel, typeOfCar, region, state, image)
         _isLoading.postValue(false)
     }
 

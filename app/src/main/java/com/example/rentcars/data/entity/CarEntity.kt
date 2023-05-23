@@ -12,7 +12,7 @@ data class CarEntity(
 )
 
 enum class StateOfCar(val title: String){
-    IN_FLIGHT("1"), ON_REPAIR("2"), SOLD("3")
+    IN_FLIGHT("1"), ON_REPAIR("2"), SOLD("3"), REST("4")
 }
 
 enum class TypeOfCar(val title: String){
