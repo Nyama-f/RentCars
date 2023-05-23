@@ -11,4 +11,27 @@
         <item name="boxStrokeColor">@color/general_color_grey</item>
         <item name="hintTextColor">@color/general_contrast</item>
     </style>
+
+    <style name="DefaultButton" parent="">
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+    </style>
+
 </resources>

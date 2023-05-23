@@ -10,4 +10,5 @@
     <string name="email">Почта</string>
     <string name="region">Регион</string>
     <string name="save">Сохранить</string>
+    <string name="add_auto">Добавить авто</string>
 </resources>
