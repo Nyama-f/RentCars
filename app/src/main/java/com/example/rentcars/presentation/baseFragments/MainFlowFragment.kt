@@ -111,15 +111,14 @@ class MainFlowFragment : BaseFlowFragment(
 
 
 
-//        navController.addOnDestinationChangedListener { _, destination, _ ->
-//            if (destination.id == R.id.transactionFragment ||
-//                destination.id == R.id.someonesProfileFragment ||
-//            ) {
-//                hideBottomNavigation()
-//            } else {
-//                showBottomNavigation()
-//            }
-//        }
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.addAutoFragment
+            ) {
+                hideBottomNavigation()
+            } else {
+                showBottomNavigation()
+            }
+        }
     }
 
     private fun hideBottomNavigation() {

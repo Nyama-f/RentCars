@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_input_comment"
+        android:id="@+id/bottom_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -51,8 +51,9 @@
         app:cardElevation="30dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/thanks_btn"
+            android:id="@+id/add_auto_btn"
             style="@style/DefaultButton"
+            android:transitionName="transitionToCreateAuto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

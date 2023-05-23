@@ -10,7 +10,11 @@
         android:id="@+id/carsFragment"
         android:name="com.example.rentcars.presentation.fragment.CarsFragment"
         android:label="fragment_cars"
-        tools:layout="@layout/fragment_cars" />
+        tools:layout="@layout/fragment_cars" >
+        <action
+            android:id="@+id/action_carsFragment_to_addAutoFragment"
+            app:destination="@id/addAutoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.rentcars.presentation.fragment.ProfileFragment"
@@ -25,4 +29,9 @@
         android:name="com.example.rentcars.presentation.fragment.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/addAutoFragment"
+        android:name="com.example.rentcars.presentation.fragment.AddAutoFragment"
+        android:label="fragment_add_auto"
+        tools:layout="@layout/fragment_add_auto" />
 </navigation>

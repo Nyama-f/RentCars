@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rentcars.R
 import com.example.rentcars.databinding.FragmentCarsBinding
 import com.example.rentcars.presentation.adapter.CarAdapter
 import com.example.rentcars.presentation.viewmodel.CarsViewModel
+import com.google.android.material.transition.platform.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -40,6 +43,25 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         }
         viewModel.cars.observe(viewLifecycleOwner){
             (binding.list.adapter as CarAdapter).submitList(it)
+        }
+
+        binding.addAutoBtn.setOnClickListener {
+            // Переход на экран добавления авто
+            val extras = FragmentNavigatorExtras(it to "transitionToCreateAuto")
+
+//            exitTransition = Hold().apply {
+//                duration = 350.toLong()
+//            }
+
+            reenterTransition = MaterialElevationScale(true).apply {
+                duration = 350.toLong()
+            }
+            findNavController().navigate(
+                R.id.action_carsFragment_to_addAutoFragment,
+                null,
+                null,
+                extras
+            )
         }
     }
 
