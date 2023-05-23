@@ -49,10 +49,6 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             // Переход на экран добавления авто
             val extras = FragmentNavigatorExtras(it to "transitionToCreateAuto")
 
-//            exitTransition = Hold().apply {
-//                duration = 350.toLong()
-//            }
-
             reenterTransition = MaterialElevationScale(true).apply {
                 duration = 350.toLong()
             }

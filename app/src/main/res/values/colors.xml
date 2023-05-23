@@ -13,4 +13,6 @@
     <color name="general_color_grey">#CECECE</color>
     <color name="general_contrast">#212121</color>
 
+    <color name="transparent">#00BB86FC</color>
+
 </resources>
