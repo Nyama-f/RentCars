@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rentcars.data.entity.CarEntity
+import com.example.rentcars.data.entity.StateOfCar
+import com.example.rentcars.data.entity.TypeOfCar
 import com.example.rentcars.databinding.ItemCarBinding
+import com.example.rentcars.utils.isNullOrEmptyMy
+import com.example.rentcars.utils.setImage
 
 
 class CarAdapter : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback) {
@@ -38,8 +42,30 @@ class CarAdapter : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback
     }
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
+        val item = currentList[position]
+        holder.binding.apply {
+            markTv.text = item.markAndModel
+            typeTv.text = mapTypeOfCar(item.typeOfCar)
+            stateTv.text = mapStateOfCar(item.state)
+            imageIv.setImage(item.image)
+        }
 
+    }
 
+    // По хорошему это надо делать в маппере, а не в адаптере
+    private fun mapTypeOfCar(typeOfCar: TypeOfCar): String {
+        return when(typeOfCar){
+            TypeOfCar.TRUCK -> "Грузовой"
+            TypeOfCar.NO_TRUCK -> "Легковой"
+        }
+    }
+
+    private fun mapStateOfCar(stateOfCar: StateOfCar): String {
+        return when(stateOfCar){
+            StateOfCar.IN_FLIGHT -> "В рейсе"
+            StateOfCar.ON_REPAIR -> "На ремонте"
+            StateOfCar.SOLD -> "Продано"
+        }
     }
 
     override fun getItemCount(): Int {

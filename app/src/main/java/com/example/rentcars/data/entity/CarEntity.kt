@@ -7,7 +7,8 @@ data class CarEntity(
     val markAndModel: String,
     val typeOfCar: TypeOfCar,
     val region: String,
-    var state: StateOfCar
+    var state: StateOfCar,
+    val image: String?
 )
 
 enum class StateOfCar(val title: String){

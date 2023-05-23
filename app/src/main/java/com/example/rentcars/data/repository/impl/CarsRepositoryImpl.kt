@@ -19,35 +19,40 @@ class CarsRepositoryImpl @Inject constructor(
             "Toyota Altezza",
             TypeOfCar.NO_TRUCK,
             region = "Asia/Japan",
-            state = StateOfCar.ON_REPAIR
+            state = StateOfCar.ON_REPAIR,
+            image = "https://a.d-cd.net/JIiHMbeYNwER5aQRQ-zt-9A1QLI-1920.jpg"
         ),
         CarEntity(
             2,
             "Audi A6",
             TypeOfCar.NO_TRUCK,
             region = "Europe/Germany",
-            state = StateOfCar.IN_FLIGHT
+            state = StateOfCar.IN_FLIGHT,
+            image = "https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/6/06/755773633153066.jpg"
         ),
         CarEntity(
             3,
             "Hyndai Smth",
             TypeOfCar.TRUCK,
             region = "Asia/Yekaterinburg",
-            state = StateOfCar.SOLD
+            state = StateOfCar.SOLD,
+            image = "https://www.autostat.ru/application/includes/blocks/big_photo/images/cache/000/098/048/22bd1f69-670-0.jpg?_=1637233323"
         ),
         CarEntity(
             4,
             "Lada Vesta",
             TypeOfCar.NO_TRUCK,
             region = "Asia/Chelyabinsk",
-            state = StateOfCar.ON_REPAIR
+            state = StateOfCar.ON_REPAIR,
+            image = "https://5koleso.ru/wp-content/uploads/2021/04/lada-vesta-sport-p2-08.jpg"
         ),
         CarEntity(
             5,
-            "Nissan X-Trail",
+            "Subaru Impreza",
             TypeOfCar.NO_TRUCK,
             region = "Europe/Moscow",
-            state = StateOfCar.IN_FLIGHT
+            state = StateOfCar.IN_FLIGHT,
+            image = "https://all-auto.org/wp-content/uploads/2020/10/Subaru-WRX-2-1.jpg"
         ),
     )
 
@@ -62,11 +67,12 @@ class CarsRepositoryImpl @Inject constructor(
         markAndModel: String,
         typeOfCar: TypeOfCar,
         region: String,
-        state: StateOfCar
+        state: StateOfCar,
+        image: String?
     ) {
         cars.add(
             CarEntity(
-                id, markAndModel, typeOfCar, region, state
+                id, markAndModel, typeOfCar, region, state, image
             )
         )
     }

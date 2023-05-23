@@ -14,7 +14,8 @@ interface CarsRepository {
         markAndModel: String,
         typeOfCar: TypeOfCar,
         region: String,
-        state: StateOfCar
+        state: StateOfCar,
+        image: String?
     )
 
     fun deleteCar(
