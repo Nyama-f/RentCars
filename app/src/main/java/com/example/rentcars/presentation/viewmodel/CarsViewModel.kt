@@ -26,6 +26,9 @@ class CarsViewModel @Inject constructor(
     private val _cars = MutableLiveData<List<CarEntity>?>()
     val cars: LiveData<List<CarEntity>?> = _cars
 
+    private val _detailOfCar = MutableLiveData<CarEntity?>()
+    val detailOfCar: LiveData<CarEntity?> = _detailOfCar
+
 
     fun getCars(
     ) {
@@ -35,6 +38,29 @@ class CarsViewModel @Inject constructor(
                 when (val result = carsRepository.getCars()) {
                     is ResultWrapper.Success -> {
                         _cars.postValue(result.value)
+                    }
+                    else -> {
+                        if (result is ResultWrapper.GenericError) {
+
+
+                        } else if (result is ResultWrapper.NetworkError) {
+                        }
+                    }
+                }
+                _isLoading.postValue(false)
+            }
+        }
+    }
+
+    fun getCar(
+        id: Int
+    ) {
+        _isLoading.postValue(true)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                when (val result = carsRepository.getCar(id)) {
+                    is ResultWrapper.Success -> {
+                        _detailOfCar.postValue(result.value)
                     }
                     else -> {
                         if (result is ResultWrapper.GenericError) {
@@ -60,6 +86,8 @@ class CarsViewModel @Inject constructor(
         carsRepository.addCar(markAndModel, typeOfCar, region, state, image)
         _isLoading.postValue(false)
     }
+
+
 
     fun deleteCar(
         id: Int,

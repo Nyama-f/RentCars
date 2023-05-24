@@ -62,6 +62,12 @@ class CarsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCar(id: Int): ResultWrapper<CarEntity> {
+        return safeApiCall(Dispatchers.IO) {
+            cars.find { carEntity -> carEntity.id == id } ?: cars.first()
+        }
+    }
+
     override fun addCar(
         markAndModel: String,
         typeOfCar: TypeOfCar,
