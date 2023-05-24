@@ -106,6 +106,7 @@ class AddAutoFragment : Fragment(R.layout.fragment_add_auto) {
                 viewModel.addCar(
                     markAndModel = binding.titleEt.text.toString(),
                     typeOfCar = typeOfCar,
+                    description = binding.descriptionEt.text.toString(),
                     region = binding.regionEt.text.toString(),
                     state = StateOfCar.REST,
                     image = imageUri

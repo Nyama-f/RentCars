@@ -1,6 +1,7 @@
 package com.example.rentcars.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,11 +10,14 @@ import com.example.rentcars.data.entity.CarEntity
 import com.example.rentcars.data.entity.StateOfCar
 import com.example.rentcars.data.entity.TypeOfCar
 import com.example.rentcars.databinding.ItemCarBinding
+import com.example.rentcars.presentation.CarMapper
 import com.example.rentcars.utils.isNullOrEmptyMy
 import com.example.rentcars.utils.setImage
 
 
-class CarAdapter : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback) {
+class CarAdapter(
+    val onCarClicked: (carId: Int) -> Unit
+) : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback) {
 
     companion object{
 
@@ -45,14 +49,18 @@ class CarAdapter : ListAdapter<CarEntity, CarAdapter.CarViewHolder>(DiffCallback
         val item = currentList[position]
         holder.binding.apply {
             markTv.text = item.markAndModel
-            typeTv.text = mapTypeOfCar(item.typeOfCar)
-            stateTv.text = mapStateOfCar(item.state)
+            // По хорошему это надо делать в маппере и подключать в domain слое, а мы сейчас в слое view(presentation)
+            typeTv.text = CarMapper.mapTypeOfCar(item.typeOfCar)
+            stateTv.text = CarMapper.mapStateOfCar(item.state)
             imageIv.setImage(item.image)
+            root.setOnClickListener {
+                onCarClicked.invoke(item.id)
+            }
         }
 
     }
 
-    // По хорошему это надо делать в маппере, а не в адаптере
+
     private fun mapTypeOfCar(typeOfCar: TypeOfCar): String {
         return when(typeOfCar){
             TypeOfCar.TRUCK -> "Грузовой"

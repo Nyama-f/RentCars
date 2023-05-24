@@ -14,6 +14,7 @@ import com.example.rentcars.R
 import com.example.rentcars.databinding.FragmentCarsBinding
 import com.example.rentcars.presentation.adapter.CarAdapter
 import com.example.rentcars.presentation.viewmodel.CarsViewModel
+import com.example.rentcars.utils.Consts.CAR_ID
 import com.google.android.material.transition.platform.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,11 +38,11 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCars()
         binding.list.apply {
-            adapter = CarAdapter()
+            adapter = CarAdapter(::onCarClicked)
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        viewModel.cars.observe(viewLifecycleOwner){
+        viewModel.cars.observe(viewLifecycleOwner) {
             (binding.list.adapter as CarAdapter).submitList(it)
         }
 
@@ -59,6 +60,14 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
                 extras
             )
         }
+    }
+
+    private fun onCarClicked(carId: Int) {
+        val bundle = Bundle()
+        bundle.apply {
+            putInt(CAR_ID, carId)
+        }
+        findNavController().navigate(R.id.action_carsFragment_to_detailCarFragment, bundle)
     }
 
 

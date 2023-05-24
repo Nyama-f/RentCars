@@ -6,6 +6,7 @@ data class CarEntity(
     val id: Int,
     val markAndModel: String,
     val typeOfCar: TypeOfCar,
+    val description: String,
     val region: String,
     var state: StateOfCar,
     val image: String?

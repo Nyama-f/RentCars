@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_carsFragment_to_addAutoFragment"
             app:destination="@id/addAutoFragment" />
+        <action
+            android:id="@+id/action_carsFragment_to_detailCarFragment"
+            app:destination="@id/detailCarFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -34,4 +37,9 @@
         android:name="com.example.rentcars.presentation.fragment.AddAutoFragment"
         android:label="fragment_add_auto"
         tools:layout="@layout/fragment_add_auto" />
+    <fragment
+        android:id="@+id/detailCarFragment"
+        android:name="com.example.rentcars.presentation.fragment.DetailCarFragment"
+        android:label="fragment_detail_car"
+        tools:layout="@layout/fragment_detail_car" />
 </navigation>

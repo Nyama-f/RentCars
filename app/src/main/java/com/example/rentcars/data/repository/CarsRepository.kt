@@ -12,6 +12,7 @@ interface CarsRepository {
 
     fun addCar(
         markAndModel: String,
+        description: String,
         typeOfCar: TypeOfCar,
         region: String,
         state: StateOfCar,

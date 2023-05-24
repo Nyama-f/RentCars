@@ -78,12 +78,13 @@ class CarsViewModel @Inject constructor(
     fun addCar(
         markAndModel: String,
         typeOfCar: TypeOfCar,
+        description: String,
         region: String,
         state: StateOfCar,
         image: String?
     ) {
         _isLoading.postValue(true)
-        carsRepository.addCar(markAndModel, typeOfCar, region, state, image)
+        carsRepository.addCar(markAndModel, description, typeOfCar, region, state, image)
         _isLoading.postValue(false)
     }
 
