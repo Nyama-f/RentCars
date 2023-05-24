@@ -44,7 +44,6 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             setHasFixedSize(true)
         }
         viewModel.cars.observe(viewLifecycleOwner) {
-            (binding.list.adapter as CarAdapter).submitList(null)
             (binding.list.adapter as CarAdapter).submitList(it)
             binding.refreshLayout.isRefreshing = false
         }
