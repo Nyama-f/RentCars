@@ -37,13 +37,21 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCars()
+        val listAdapter = CarAdapter(::onCarClicked)
         binding.list.apply {
-            adapter = CarAdapter(::onCarClicked)
+            adapter = listAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
         viewModel.cars.observe(viewLifecycleOwner) {
+            (binding.list.adapter as CarAdapter).submitList(null)
             (binding.list.adapter as CarAdapter).submitList(it)
+            binding.refreshLayout.isRefreshing = false
+        }
+
+
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.getCars()
         }
 
         binding.addAutoBtn.setOnClickListener {

@@ -27,7 +27,6 @@ class MainFlowFragment : BaseFlowFragment(
     }
 
 
-
     override fun setupNavigation(navController: NavController) {
         binding.bottomNavigation.setupWithNavController(navController)
 
@@ -110,9 +109,9 @@ class MainFlowFragment : BaseFlowFragment(
 //        })
 
 
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.addAutoFragment
+            if (destination.id == R.id.addAutoFragment ||
+                destination.id == R.id.detailCarFragment
             ) {
                 hideBottomNavigation()
             } else {
@@ -131,9 +130,6 @@ class MainFlowFragment : BaseFlowFragment(
         binding.bottomNavigation.visibility = View.VISIBLE
 
     }
-
-
-
 
 
 }

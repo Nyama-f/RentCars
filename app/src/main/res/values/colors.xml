@@ -14,5 +14,6 @@
     <color name="general_contrast">#212121</color>
 
     <color name="transparent">#00BB86FC</color>
+    <color name="red">#8E1E1E</color>
 
 </resources>

@@ -89,11 +89,12 @@ class CarsRepositoryImpl @Inject constructor(
     }
 
     override fun deleteCar(id: Int) {
-        cars.removeAt(id)
+        val targetCar = cars.find { carEntity -> carEntity.id == id }
+        targetCar?.let { cars.remove(it) }
     }
 
     override fun changeStateCar(id: Int, newState: StateOfCar) {
-        cars[id].state = newState
+        cars.find { carEntity -> carEntity.id == id }?.state = newState
     }
 
 }

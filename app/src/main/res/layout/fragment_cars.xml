@@ -25,10 +25,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-<!--            android:id="@+id/refresh_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp">-->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
@@ -36,31 +36,21 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:visibility="visible"
-                android:paddingBottom="60dp"
                 tools:listitem="@layout/item_car" />
-<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_card"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_auto_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        style="@style/MyCardView"
-        app:cardElevation="30dp">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_auto_btn"
-            style="@style/DefaultButton"
-            android:transitionName="transitionToCreateAuto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="17dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="@string/add_auto" />
-
-    </com.google.android.material.card.MaterialCardView>
+        android:layout_gravity="end|bottom"
+        android:transitionName="transitionToCreateAuto"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/baseline_add_24"
+        android:layout_marginBottom="104dp"
+        android:contentDescription="@null"
+        app:borderWidth="0dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

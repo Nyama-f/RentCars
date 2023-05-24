@@ -1,5 +1,6 @@
 package com.example.rentcars.presentation.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rentcars.R
+import com.example.rentcars.data.entity.StateOfCar
 import com.example.rentcars.databinding.FragmentDetailCarBinding
 import com.example.rentcars.presentation.CarMapper
 import com.example.rentcars.presentation.viewmodel.CarsViewModel
@@ -40,6 +42,52 @@ class DetailCarFragment : Fragment(R.layout.fragment_detail_car) {
                 binding.regionTv.text = it.region
                 binding.descriptionTv.text = it.description
                 binding.imageIv.setImage(it.image)
+            }
+        }
+
+        binding.editStateBtn.setOnClickListener {
+            val options = arrayOf("В рейсе", "На ремонте", "Продано", "Простаивает")
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Выберите вариант")
+            builder.setItems(options) { _, which ->
+                val selectedOption = options[which]
+                binding.stateTv.text = selectedOption
+                handleDialogResponse(which)
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        binding.deleteBtn.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Вы точно хотите удалить авто?")
+            builder.setPositiveButton("Да,удалить"){_, _ ->
+                carId?.let { viewModel.deleteCar(it) }
+                activity?.onBackPressedDispatcher?.onBackPressed()
+            }
+            builder.setNegativeButton("Нет, оставить"){ dialog, _ ->
+                dialog.cancel()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
+    }
+
+    private fun handleDialogResponse(idResponse: Int){
+        when (idResponse) {
+            0 -> {
+                carId?.let { carId -> viewModel.updateStateCar(carId, StateOfCar.IN_FLIGHT) }
+            }
+            1 -> {
+                carId?.let { carId -> viewModel.updateStateCar(carId, StateOfCar.ON_REPAIR) }
+            }
+            2 -> {
+                carId?.let { carId -> viewModel.updateStateCar(carId, StateOfCar.SOLD) }
+            }
+            else -> {
+                carId?.let { carId -> viewModel.updateStateCar(carId, StateOfCar.REST) }
             }
         }
     }
